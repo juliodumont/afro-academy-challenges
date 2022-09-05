@@ -34,12 +34,22 @@
     text-align: justify;
     gap: 1rem;
 
+    input[type='checkbox']:checked {
+      accent-color: var(--green-300);
+    }
+
+    input[type='text'] {
+      outline: none;
+      width: 100%;
+    }
+
     .task-text {
       border: none;
     }
 
     .completed-task {
       text-decoration: line-through;
+      color: var(--gray-700);
     }
 
     @media screen and (min-width: 576px) {

@@ -1,6 +1,7 @@
 import './TodoCard.scss';
 import { FeTrash, FeEdit, FeFinalDate, FeInitialDate } from '../../assets/Icons';
 import { Task } from '../../types';
+import { useEffect, useState } from 'react';
 
 type TodoCardProps = {
   task: Task;
@@ -8,7 +9,7 @@ type TodoCardProps = {
   isEditing: boolean;
   onTaskCheck: (taskIndex: number) => void;
   onTaskDelete: (taskIndex: number) => void;
-  onTaskEdit: (taskIndex: number) => void;
+  onTaskEdit: (taskIndex: number, editedTask?: string) => void;
 };
 
 const TodoCard = ({
@@ -19,16 +20,37 @@ const TodoCard = ({
   onTaskDelete,
   onTaskEdit
 }: TodoCardProps) => {
+  const handleFinishEditing = () => {
+    onTaskEdit(index, task);
+  };
+
+  const handleTaskEdit = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setTask(event.target.value);
+  };
+
+  useEffect(() => {
+    setTask(text);
+  }, [isEditing, text]);
+
+  const [task, setTask] = useState<string>(text);
+
   return (
     <div className={`todo-card-container base-card ${isEditing ? 'editing' : ''}`}>
       <div className="todo-card-task-container">
         <div className="todo-card-task">
           <input type="checkbox" onChange={() => onTaskCheck(index)} />
-          <input
-            type="text"
-            className={`task-text ${completed ? 'completed-task' : ''}`}
-            value={text}
-          />
+          {isEditing ? (
+            <input
+              type="text"
+              className={`task-text ${completed ? 'completed-task' : ''}`}
+              onBlur={handleFinishEditing}
+              onChange={handleTaskEdit}
+              autoFocus
+              value={task}
+            />
+          ) : (
+            <p className={`task-text ${completed ? 'completed-task' : ''}`}>{text}</p>
+          )}
         </div>
         <div className="todo-card-buttons-container">
           <button className="edit-button" onClick={() => onTaskEdit(index)}>

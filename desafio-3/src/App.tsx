@@ -3,7 +3,7 @@ import './App.css';
 import { FeClipboard } from './assets/Icons';
 import { Header, TodoCard, TodoInputs } from './components';
 import { Task } from './types';
-import { formatDate, getCompletedTasks, removeTaskFromList } from './utils/utils';
+import { getCompletedTasks, removeTaskFromList, updateTask } from './utils/utils';
 
 function App() {
   const [taskList, setTaskList] = useState<Task[]>([
@@ -19,9 +19,15 @@ function App() {
 
   const [isEditing, setIsEditing] = useState({ type: false, index: 0 });
 
-  const onTaskEdit = (taskIndex: number) => {
+  const onTaskEdit = (taskIndex: number, editedTask = '') => {
+    if (editedTask !== '') {
+      const updatedTaskList = [...taskList];
+      const updatedTask = updateTask(taskList, taskIndex, editedTask, false);
+      updatedTaskList.splice(taskIndex, 1, updatedTask);
+      setTaskList(updatedTaskList);
+    }
     setIsEditing({
-      type: true,
+      type: !isEditing.type,
       index: taskIndex
     });
   };
@@ -31,17 +37,16 @@ function App() {
   };
 
   const onTaskDelete = (taskIndex: number) => {
+    const taskWasBeingEdited = isEditing.type && isEditing.index === taskIndex;
+    if (taskWasBeingEdited) {
+      setIsEditing({ type: false, index: 0 });
+    }
     setTaskList(removeTaskFromList(taskList, taskIndex));
   };
 
   const onTaskCheck = (taskIndex: number) => {
-    const task = taskList[taskIndex];
     const updatedTaskList = [...taskList];
-    const updatedTask = {
-      ...task,
-      completed: !task.completed,
-      date: { ...task.date, to: !task.completed ? formatDate(new Date()) : '' }
-    };
+    const updatedTask = updateTask(taskList, taskIndex, '', true);
     updatedTaskList.splice(taskIndex, 1, updatedTask);
     setTaskList(updatedTaskList);
   };

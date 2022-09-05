@@ -15,8 +15,12 @@
     }
 
     &.error {
-      margin-bottom: 1.125rem;
+      margin-bottom: 0rem;
       border-color: var(--red-400);
+
+      &:focus {
+        outline: 1px solid var(--red-400);
+      }
     }
 
     &:focus {

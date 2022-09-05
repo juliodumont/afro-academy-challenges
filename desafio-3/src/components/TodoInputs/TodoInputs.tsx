@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { FePlus } from '../../assets/Icons';
 import { Task, TaskDate } from '../../types';
-import { formatDate } from '../../utils/utils';
+import { checkDateAndFormat } from '../../utils/utils';
 import './TodoInputs.scss';
 
 type TodoInputsProps = {
@@ -11,19 +11,22 @@ type TodoInputsProps = {
 
 const TodoInputs = ({ onTaskAdd, taskIndex }: TodoInputsProps) => {
   const [task, setTask] = useState({ text: '', date: '' });
-  const [error, setError] = useState<boolean>(false);
+  const [error, setError] = useState({ date: false, text: false });
 
   const handleTaskAdd = () => {
     const newTask = {
       ...task,
       index: taskIndex,
       completed: false,
-      date: { from: formatDate(task.date) } as TaskDate
+      date: { from: checkDateAndFormat(task.date) } as TaskDate
     };
-    if (newTask.date.from === 'Invalid Date') {
-      setError(true);
+    const isValidDate = !(newTask.date.from === 'Invalid Date');
+    const isValidTask = !(newTask.text === '');
+
+    if (!isValidDate || !isValidTask) {
+      setError({ text: !isValidTask, date: !isValidDate });
     } else {
-      setError(false);
+      setError({ text: false, date: false });
       setTask({ text: '', date: '' });
       onTaskAdd(newTask);
     }
@@ -41,15 +44,16 @@ const TodoInputs = ({ onTaskAdd, taskIndex }: TodoInputsProps) => {
     <div className="todo-inputs-container">
       <input
         type="text"
-        className="base-card"
+        className={`base-card ${error.text ? 'error' : ''}`}
         placeholder="Insira uma nova atividade"
         onChange={handleTaskChange}
         value={task.text}
       />
+      {error.text && <p className="error-alert">A tarefa não pode estar em branco!</p>}
       <div>
         <input
           type="text"
-          className={`base-card ${error ? 'error' : ''}`}
+          className={`base-card ${error.date ? 'error' : ''}`}
           placeholder="Insira a data limite para a atividade"
           value={task.date}
           onChange={handleDateChange}
@@ -58,7 +62,7 @@ const TodoInputs = ({ onTaskAdd, taskIndex }: TodoInputsProps) => {
           <FePlus />
         </button>
       </div>
-      {error && <p className="error-alert">Insira uma data válida!</p>}
+      {error.date && <p className="error-alert">Insira uma data válida!</p>}
     </div>
   );
 };
