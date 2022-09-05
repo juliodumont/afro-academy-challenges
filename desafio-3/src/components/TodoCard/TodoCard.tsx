@@ -38,7 +38,7 @@ const TodoCard = ({
     <div className={`todo-card-container base-card ${isEditing ? 'editing' : ''}`}>
       <div className="todo-card-task-container">
         <div className="todo-card-task">
-          <input type="checkbox" onChange={() => onTaskCheck(index)} />
+          <input type="checkbox" onChange={() => onTaskCheck(index)} checked={completed} />
           {isEditing ? (
             <input
               type="text"

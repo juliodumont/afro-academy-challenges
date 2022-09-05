@@ -6,16 +6,7 @@ import { Task } from './types';
 import { getCompletedTasks, removeTaskFromList, updateTask } from './utils/utils';
 
 function App() {
-  const [taskList, setTaskList] = useState<Task[]>([
-    {
-      text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis perferendis culpa aperiam dolore iusto cum.',
-      completed: false,
-      date: {
-        to: new Date().toLocaleDateString(),
-        from: new Date().toLocaleDateString()
-      }
-    }
-  ]);
+  const [taskList, setTaskList] = useState<Task[]>([]);
 
   const [isEditing, setIsEditing] = useState({ type: false, index: 0 });
 

@@ -37,13 +37,19 @@
 
 .no-tasks-message-container {
   font-weight: 500;
-  font-size: 1rem;
+  font-size: 0.75rem;
   text-align: center;
   color: var(--gray-500);
 }
 
 .no-tasks-message-container svg {
   margin-bottom: 2rem;
+}
+
+@media screen and (min-width: 576px) {
+  .no-tasks-message-container {
+    font-size: 1rem;
+  }
 }
 
 @media screen and (min-width: 768px) {
