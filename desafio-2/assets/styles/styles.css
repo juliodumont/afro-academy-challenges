@@ -1,0 +1,41 @@
+@charset "UTF-8";
+
+@import url(./components/navigation.css);
+@import url(./components/decoration.css);
+@import url(./components/home-section.css);
+@import url(./components/home-buttons.css);
+
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  color: #000;
+}
+
+main {
+  padding: 10px;
+  position: relative;
+  min-height: 100vh;
+}
+
+@media screen and (min-width: 576px) {
+  main {
+    padding: 20px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  main {
+    padding: 40px;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  main {
+    padding: 0px;
+    display: flex;
+    flex-direction: row-reverse;
+  }
+}
+
