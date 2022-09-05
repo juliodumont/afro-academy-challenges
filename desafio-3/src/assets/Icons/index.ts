@@ -4,3 +4,4 @@ export { default as FeInitialDate } from './FeInitialDate';
 export { default as FeFinalDate } from './FeFinalDate';
 export { default as FeCheck } from './FeCheck';
 export { default as FePlus } from './FePlus';
+export { default as FeClipboard } from './FeClipboard';

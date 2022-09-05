@@ -32,7 +32,6 @@ body {
 
 .base-card {
   width: 100%;
-  max-width: 736px;
   background: var(--white);
   padding: 1rem;
   border: 1px solid var(--blue-100);

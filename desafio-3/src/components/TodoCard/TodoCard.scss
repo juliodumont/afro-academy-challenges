@@ -15,6 +15,10 @@
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+
+  &.editing {
+    outline: 2px solid var(--green-300);
+  }
 }
 
 .todo-card-task-container {
@@ -24,10 +28,15 @@
 
   .todo-card-task {
     display: flex;
+    width: 100%;
     font-size: 0.75rem;
     align-items: flex-start;
     text-align: justify;
     gap: 1rem;
+
+    .task-text {
+      border: none;
+    }
 
     .completed-task {
       text-decoration: line-through;

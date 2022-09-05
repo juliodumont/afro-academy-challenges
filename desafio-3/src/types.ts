@@ -5,7 +5,6 @@ export type TaskDate = {
 
 export type Task = {
   text: string;
-  index: number;
   completed: boolean;
   date: TaskDate;
 };
