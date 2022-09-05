@@ -1,0 +1,64 @@
+.todo-inputs-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 736px;
+  gap: 1rem;
+  padding: 0rem 0.625rem;
+  margin: 2rem 0rem;
+
+  input {
+    font-size: 0.75rem;
+
+    &::placeholder {
+      color: var(--gray-500);
+    }
+
+    &.error {
+      margin-bottom: 1.125rem;
+      border-color: var(--red-400);
+    }
+
+    &:focus {
+      outline: 1px solid var(--green-300);
+    }
+
+    @media screen and (min-width: 576px) {
+      font-size: 1rem;
+    }
+  }
+
+  div {
+    display: flex;
+    gap: 8px;
+
+    button {
+      height: 3.1875rem;
+      width: 3.1875rem;
+      padding: 1rem;
+      border-radius: 8px;
+      background-color: var(--green-500);
+      color: var(--white);
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+
+      &:hover {
+        background-color: var(--green-300);
+      }
+    }
+  }
+
+  .error-alert {
+    font-size: 0.75rem;
+    color: var(--red-400);
+
+    @media screen and (min-width: 576px) {
+      font-size: 0.875rem;
+    }
+  }
+
+  @media screen and (min-width: 768px) {
+    padding: 0;
+  }
+}

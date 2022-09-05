@@ -1,0 +1,16 @@
+#root {
+  width: 100%;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.tasks-container {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 0.625rem;
+  gap: 0.25rem;
+}

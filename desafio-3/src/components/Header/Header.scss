@@ -1,0 +1,22 @@
+.App-header {
+  height: 4.5rem;
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--green-300);
+  width: 100%;
+  gap: 0.5rem;
+
+  .App-title {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1.25rem;
+    color: var(--white);
+    font-family: 'Mitr', sans-serif;
+
+    @media screen and (min-width: 576px) {
+      font-size: 1.5rem;
+    }
+  }
+}

@@ -1,0 +1,40 @@
+:root {
+  --main-font: 'Inter', sans-serif;
+  --white: #fff;
+  --gray-100: #f1f7ed;
+  --gray-200: #eff1f3;
+  --gray-500: #707070;
+  --gray-700: #4f4f4f;
+  --gray-900: #0f0a0a;
+  --green-300: #70ae6e;
+  --green-500: #466e45;
+  --red-400: #fe5f55;
+  --blue-100: #c8e6d2;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  font-family: var(--main-font);
+}
+
+body {
+  min-height: 100vh;
+  color: var(--gray-900);
+  background-color: var(--gray-200);
+}
+
+.base-card {
+  width: 100%;
+  max-width: 736px;
+  background: var(--white);
+  padding: 1rem;
+  border: 1px solid var(--blue-100);
+  border-radius: 8px;
+}

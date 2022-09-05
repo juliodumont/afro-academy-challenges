@@ -1,0 +1,82 @@
+%todo-card-button {
+  width: 2rem;
+  height: 2rem;
+  border: none;
+  background-color: var(--white);
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  &:hover {
+    background: var(--gray-100);
+  }
+}
+
+.todo-card-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.todo-card-task-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+
+  .todo-card-task {
+    display: flex;
+    font-size: 0.75rem;
+    align-items: flex-start;
+    text-align: justify;
+    gap: 1rem;
+
+    @media screen and (min-width: 576px) {
+      font-size: 0.875rem;
+    }
+  }
+
+  .todo-card-buttons-container {
+    display: flex;
+    gap: 1rem;
+
+    .edit-button {
+      @extend %todo-card-button;
+
+      &:hover {
+        color: var(--green-300);
+      }
+    }
+
+    .delete-button {
+      @extend %todo-card-button;
+
+      &:hover {
+        color: var(--red-400);
+      }
+    }
+  }
+}
+
+.completed-task {
+  text-decoration: line-through;
+}
+
+.todo-card-task-date-container {
+  display: flex;
+  align-self: flex-end;
+  gap: 1rem;
+
+  .date-container {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.75rem;
+
+    p {
+      color: var(--gray-700);
+    }
+
+    @media screen and (min-width: 576px) {
+      font-size: 0.875rem;
+    }
+  }
+}
