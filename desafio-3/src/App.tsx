@@ -1,10 +1,8 @@
 import { useState } from 'react';
 import './App.css';
-import { TodoCard } from './components';
-import Header from './components/Header/Header';
-import TodoInputs from './components/TodoInputs/TodoInputs';
+import { Header, TodoCard, TodoInputs } from './components';
 import { Task } from './types';
-import { formatDate, removeTaskFromList } from './utils/utils';
+import { formatDate, getCompletedTasks, removeTaskFromList } from './utils/utils';
 
 function App() {
   const [taskList, setTaskList] = useState<Task[]>([
@@ -36,7 +34,7 @@ function App() {
       date: { ...task.date, to: !task.completed ? formatDate(new Date()) : '' }
     };
     updatedTaskList.splice(taskIndex, 1, updatedTask);
-    setTaskList(updatedTaskList);
+    setTaskList([]);
   };
 
   return (
@@ -44,6 +42,14 @@ function App() {
       <Header />
       <TodoInputs onTaskAdd={onTaskAdd} taskIndex={taskList.length} />
       <div className="tasks-container">
+        <div className="task-counter-container">
+          <h2>
+            Tarefas concluídas{' '}
+            <span>
+              {getCompletedTasks(taskList)} de {taskList.length}
+            </span>
+          </h2>
+        </div>
         {taskList.map((task, index) => (
           <TodoCard key={index} task={task} onTaskCheck={onTaskCheck} onTaskDelete={onTaskDelete} />
         ))}

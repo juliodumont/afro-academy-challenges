@@ -29,18 +29,22 @@ const TodoCard = ({
           </button>
         </div>
       </div>
-      <div className="todo-card-task-date-container">
-        {date.to && (
-          <div className="date-container">
-            <FeFinalDate />
-            <p>Finalizado em {date.to}</p>
-          </div>
-        )}
-        <div className="date-container">
-          <FeInitialDate />
-          <p>Até {date.from}</p>
+      {(date.to || date.from) && (
+        <div className="todo-card-task-date-container">
+          {date.to && (
+            <div className="date-container">
+              <FeFinalDate />
+              <p>Finalizado em {date.to}</p>
+            </div>
+          )}
+          {date.from && (
+            <div className="date-container">
+              <FeInitialDate />
+              <p>Até {date.from}</p>
+            </div>
+          )}
         </div>
-      </div>
+      )}
     </div>
   );
 };

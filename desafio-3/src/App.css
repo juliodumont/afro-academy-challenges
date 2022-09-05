@@ -14,3 +14,21 @@
   padding: 2rem 0.625rem;
   gap: 0.25rem;
 }
+
+.task-counter-container {
+  margin-bottom: 0.75rem;
+}
+
+.task-counter-container h2 {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.task-counter-container span {
+  padding: 1px 4px;
+  font-weight: 400;
+  font-size: 0.75rem;
+  color: var(--white);
+  background-color: #333333;
+  border-radius: 50px;
+}

@@ -29,6 +29,10 @@
     text-align: justify;
     gap: 1rem;
 
+    .completed-task {
+      text-decoration: line-through;
+    }
+
     @media screen and (min-width: 576px) {
       font-size: 0.875rem;
     }
@@ -54,10 +58,6 @@
       }
     }
   }
-}
-
-.completed-task {
-  text-decoration: line-through;
 }
 
 .todo-card-task-date-container {
